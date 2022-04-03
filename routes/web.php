@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // List all listings
 Route::get('/', function () {
     return view('listings', [
-        'listings' => Listing::all()
+        'listings' => Listing::latest()->filter(request(['search', 'category', 'seller']))->get()
     ]);
 });
 
