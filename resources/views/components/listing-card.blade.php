@@ -37,15 +37,14 @@
                 <div class="flex items-center text-sm">
                     <img src="./images/lary-avatar.svg" alt="Lary avatar">
                     <div class="ml-3">
-                        <h5 class="font-bold">Lary Laracore</h5>
-                        <h6>Mascot at Laracasts</h6>
+                        <h5 class="font-bold">{{ $listing->user->name }}</h5>
                     </div>
                 </div>
 
                 <div>
-                    <a href="/listing/{{ $listing->id }}"
-                        class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8">Read
-                        More</a>
+                    <a href="/listing/{{ $listing->slug }}"
+                        class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8">
+                        Details</a>
                 </div>
             </footer>
         </div>
