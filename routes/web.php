@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\Listing;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +34,12 @@ Route::get('/listing/{listing:slug}', function (Listing $listing) {
 Route::get('/category/{category:slug}', function (Category $category) {
     return view('listings', [
         'listings' => $category->listings
+    ]);
+});
+
+// Seller page
+Route::get('/seller/{seller:username}', function (User $seller) {
+    return view('listings', [
+        'listings' => $seller->listings
     ]);
 });

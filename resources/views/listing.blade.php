@@ -11,7 +11,11 @@
                 <div class="flex items-center lg:justify-center text-sm mt-4">
                     <img src="/images/lary-avatar.svg" alt="Lary avatar">
                     <div class="ml-3 text-left">
-                        <h5 class="font-bold">{{ $listing->seller->name }}</h5>
+                        <h5 class="font-bold">
+                            <a href="/seller/{{ $listing->seller->username }}">
+                                {{ $listing->seller->name }}
+                            </a>
+                        </h5>
                     </div>
                 </div>
             </div>
