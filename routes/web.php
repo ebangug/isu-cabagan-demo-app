@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// List all listings
 Route::get('/', function () {
-    return view('welcome');
+    return view('listings');
 });
+
+// Display listing detail
