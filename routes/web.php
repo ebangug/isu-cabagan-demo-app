@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,12 @@ Route::get('/', function () {
 Route::get('/listing/{listing:slug}', function (Listing $listing) {
     return view('listing', [
         'listing' => $listing
+    ]);
+});
+
+// Category page
+Route::get('/category/{category:slug}', function (Category $category) {
+    return view('listings', [
+        'listings' => $category->listings
     ]);
 });
