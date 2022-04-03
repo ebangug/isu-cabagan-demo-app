@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 // List all listings
 Route::get('/', function () {
-    return view('listings');
+    return view('listings', [
+        'listings' => Listing::all()
+    ]);
 });
 
 // Display listing detail
