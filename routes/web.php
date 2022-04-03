@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use App\Models\Category;
 use App\Models\Listing;
 use App\Models\User;
@@ -16,19 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// List all listings
-Route::get('/', function () {
-    return view('listings', [
-        'listings' => Listing::latest()->filter(request(['search', 'category', 'seller']))->get(),
-    ]);
-});
-
-// Display listing detail
-Route::get('/listing/{listing:slug}', function (Listing $listing) {
-    return view('listing', [
-        'listing' => $listing
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']);
+Route::get('/listing/{listing:slug}', [ListingController::class, 'show']);
 
 // Category page
 Route::get('/category/{category:slug}', function (Category $category) {
