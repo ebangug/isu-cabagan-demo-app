@@ -9,9 +9,9 @@ class Listing extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function seller()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function category()
