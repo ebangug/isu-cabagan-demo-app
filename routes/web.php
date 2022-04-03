@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // List all listings
 Route::get('/', function () {
     return view('listings', [
-        'listings' => Listing::latest()->filter(request(['search', 'category', 'seller']))->get()
+        'listings' => Listing::latest()->filter(request(['search', 'category', 'seller']))->get(),
     ]);
 });
 
@@ -33,13 +33,13 @@ Route::get('/listing/{listing:slug}', function (Listing $listing) {
 // Category page
 Route::get('/category/{category:slug}', function (Category $category) {
     return view('listings', [
-        'listings' => $category->listings
+        'listings' => $category->listings,
     ]);
 });
 
 // Seller page
 Route::get('/seller/{seller:username}', function (User $seller) {
     return view('listings', [
-        'listings' => $seller->listings
+        'listings' => $seller->listings,
     ]);
 });
