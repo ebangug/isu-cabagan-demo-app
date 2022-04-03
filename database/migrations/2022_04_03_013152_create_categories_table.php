@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateListingsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreateListingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('listings', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('category_id');
-            $table->string('title');
+            $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->text('exerpt');
-            $table->text('description');
-            $table->decimal('price');
-            $table->enum('status', ['available', 'pending', 'sold', 'archived']);
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ class CreateListingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('listings');
+        Schema::dropIfExists('categories');
     }
 }
