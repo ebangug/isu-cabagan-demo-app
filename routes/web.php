@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Category;
-use App\Models\Listing;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -18,18 +18,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ListingController::class, 'index']);
-Route::get('/listing/{listing:slug}', [ListingController::class, 'show']);
+Route::get('listing/{listing:slug}', [ListingController::class, 'show']);
 
 // Category page
-Route::get('/category/{category:slug}', function (Category $category) {
+Route::get('category/{category:slug}', function (Category $category) {
     return view('listings', [
         'listings' => $category->listings,
     ]);
 });
 
 // Seller page
-Route::get('/seller/{seller:username}', function (User $seller) {
+Route::get('seller/{seller:username}', function (User $seller) {
     return view('listings', [
         'listings' => $seller->listings,
     ]);
 });
+
+Route::get('register', [RegisterController::class, 'create']);
+Route::post('register', [RegisterController::class, 'store']);
